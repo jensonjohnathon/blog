@@ -1,0 +1,110 @@
+---
+title: 'Collatz Conjecture Visualisation'
+description: 'One of the most famous unsolved problems in mathematics'
+pubDate: 'Feb 15 2025'
+heroImage: '../../assets/images/collatz_figure_title2.png'
+category: 'Math'
+tags: ['Python', 'Collatz']
+---
+
+**The Conjecture briefly explained**
+
+The Collatz Conjecture is a mathematical problem that has puzzled mathematicians for decades. The conjecture is simple to state, but it has proven to be incredibly difficult to prove or disprove.
+It is named after Lothar Collatz, who first proposed the idea in 1937.
+
+The conjecture is as follows:
+
+- Start with any positive integer `n`.
+
+- If `n` is even, divide it by 2.
+
+- If `n` is odd, multiply it by 3 and add 1.
+
+- Repeat the process indefinitely.
+
+The conjecture states that no matter what number you start with, you will eventually reach the number 1. For example, if you start with the number 6, the sequence would be:
+
+6 -> 3 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+
+Now the question is, can you prove that this sequence will always reach 1, no matter what number you start with?
+
+The other thing about the conjecture is that it is a great example of a simple problem that can produce incredibly complex and beautiful patterns. The code below visualizes the Collatz Conjecture by drawing lines between the numbers in the sequence.
+After each number, the code calculates the next number in the sequence and draws a line to it. The result is a beautiful and intricate pattern that is unique to each starting number.
+To get the disired effect we change the angle of the line depending on the number being odd or even.
+
+## The Code
+
+While watching some Visualisations I came across [Ed Baker](https://ebaker.me.uk/notes/collatz-conjecture.html)'s visualisations of the Collatz Conjecture.
+I was fascinated by the beauty of the patterns and wanted to recreate them myself.
+I used his R code as a base and then rewrote it in Python.
+Feel free to play around with the code and create your own visualisations. The Title Image of this post is a result of the code below.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+from matplotlib.collections import LineCollection
+
+#https://ebaker.me.uk/notes/collatz-conjecture.html
+
+bigNumber = 1000
+""" oddDegChange = 1.2
+evenDegChange = -0.54 """
+oddDegChange = 1.1
+evenDegChange = -0.45
+
+oddRadChange = np.radians(oddDegChange)
+evenRadChange = np.radians(evenDegChange)
+
+l = np.zeros(bigNumber, dtype=int)
+weight = np.zeros(bigNumber, dtype=int)
+
+def collatz(n):
+    weight[n-1] += 1
+    if n == 1:
+        return
+    if n % 2 == 0:
+        l[n-1] = n // 2
+        collatz(n // 2)
+    else:
+        l[n-1] = 3 * n + 1
+        if 3 * n + 1 <= bigNumber:
+            collatz(3 * n + 1)
+
+for n in range(1, bigNumber + 1):
+    collatz(n)
+
+startx = np.zeros(bigNumber, dtype=float)
+starty = np.zeros(bigNumber, dtype=float)
+endx = np.zeros(bigNumber, dtype=float)
+endy = np.zeros(bigNumber, dtype=float)
+
+def drawCollatz(n, x1, y1, rad1):
+    startx[n-1] = x1
+    starty[n-1] = y1
+
+    if n % 2 == 0:
+        rad2 = rad1 + evenRadChange
+    else:
+        rad2 = rad1 + oddRadChange
+
+    x2 = x1 + np.cos(rad2)
+    y2 = y1 + np.sin(rad2)
+
+    endx[n-1] = x2
+    endy[n-1] = y2
+
+    next_values = np.where(l == n)[0] + 1
+
+    for next_val in next_values:
+        drawCollatz(next_val, x2, y2, rad2)
+
+drawCollatz(2, 0, 0, 0)
+
+plt.figure(figsize=(40, 9), facecolor='white')
+plt.gca().set_facecolor('white')
+plt.plot([startx, endx], [starty, endy], linewidth=2, color='purple')
+plt.axis('off')
+plt.margins(y=0.3, x=0.3)
+plt.show()
+```
