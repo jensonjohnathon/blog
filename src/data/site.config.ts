@@ -11,7 +11,7 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
 	site: 'https://jensonreggentin.org/', // Write here your website url
-	author: 'Jenson Johnathon Reggentin', // Site author
+	author: 'Jenson Reggentin', // Site author
 	title: 'Jenson Reggentin', // Site title.
 	description: 'I write about whatever comes to mind', // Description to display in the meta tags
 	lang: 'en-GB',

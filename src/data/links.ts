@@ -11,7 +11,7 @@ export const SOCIALNETWORKS = [
 
 	{
 		name: 'LinkedIn',
-		url: 'https://www.linkedin.com/in/jenson-reggentin-895ab8343',
+		url: 'https://www.linkedin.com/in/jenson-reggentin/',
 		icon: LinkedInIcon
 	}
 ] as const
