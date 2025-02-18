@@ -1,0 +1,71 @@
+---
+title: 'AI from the perspective of a Junior'
+description: 'How I learned coding and what I think about AI'
+pubDate: 'Feb 18 2025'
+heroImage: '../../assets/images/openAI-chat-gpt-1-4.jpg'
+category: 'About Me'
+tags: ['AI', 'Programming', 'Opinion']
+---
+
+**Comment on [New Junior Developers Can't Actually Code](https://nmn.gl/blog/ai-and-learning)**
+
+Do junior devs rely too much on AI?  
+That's the debate right now. As a new junior developer, here's my take:
+
+Can I code at all without AI?  
+Has it slowed down my learning?
+
+**Let's find out.**
+
+## Can I Code?
+
+I am a fairly new Developer. I got my first coding job just last year as a working student and now I am searching for my first job after University.  
+My first experience with coding was in 8th grade. I wrote a simple Arduino program to make an LED blink.  
+It was fun! My teacher and I expanded it into a full traffic light model, all controlled by Arduino.  
+After that I programmed some things here and there but University and me working as a Programmer definitely elevated my abilities by a lot.
+
+If we follow the hyperbole of the article, I should not be able to code without AI. I should be an illiterate programmer just stringing along words until something makes sense.  
+Now I am by no means the best Programmer, and sometimes it really does feel like I am completely illiterate.
+But I don't use AI at work, some of my code was ok, some mid and hopefully the majority was good. So I would go as far as to call myself a semi competent programmer.
+Now the real point of the article is that AI is slowing down the learning process off new devs.
+
+## Has AI slowed down my learning process?
+
+Now this is pretty hard to answer but I would guess yes, at least a little.  
+I recently started to learn Golang, and in the beginning I used a lot of AI assistance, to get me up and running which made learning the syntax pretty slow. As I just modified the generated Code.  
+But this quickly gets remedied as code changes get bigger and multiple files get impacted.  
+Sooner or later, if you are working solo, you will have to make complicated changes, and AI will not help you. Forcing you to learn via good old Stack Overflow and other traditional resources.  
+The reason I don't use AI at work is exactly that. I pretty much never have simple changes. Most of the time, changes need to be made in multiple files across Frontend and Backend.  
+I get the most usage out of AI by helping me with planning and researching.  
+For example I am developing a React Native App and last week I wanted to implement a Calendar, which I had never done before.  
+To guarantee that it works across Web and Android, I asked ChatGPT what Calendar Component is best for my needs.  
+I could have just googled, looked up demos and then have decided.  
+The way I did it was, to ask Chatty what it thought, then I asked for pros and cons and then I decided that react-native-big-calendar is the way to go.  
+Now I would say that this process, is way better then the original way of trying to find some medium article or Stack Overflow question, dealing with the same issue.
+
+## The bigger issue
+
+AI has enabled a new way to be productive with minimal effort
+
+The "nerdiness" of programming has declined, many people just see it as a normal career like any other MINT discipline.  
+So as a percentage, not as many people that are getting into it, really are passionate about programming. These "career programmers" are not looking to develop themselves beyond what is needed to pass the required classes in university.  
+At work they will take the shortcut, AI, just to become productive as quick as possible. There is no desire to understand anything beyond that point.  
+Now I think there is nothing wrong with that. Over time they will have to learn more and whether or not they could have learned quicker does not really matter, as this is not their goal.  
+Their main goal is a good work life balance or moving into management where they don't have to code.  
+I also wonder how tools like [Giga](https://nmn.gl/blog/giga) will further impact this trend. As this tool is developed by Namanyay aka. Neo, the author of the original blog post.
+
+## Final thoughts
+
+Posts from seniors about how their way of doing things is better, than the new way is the most normal thing in the world.  
+I think many of these fears come from a self observed reliance on AI, like described in this [post](https://nmn.gl/blog/ai-illiterate-programmers) from Namanyay.  
+Especially with errors, I have observed the same thought process of first pasting the error into my favorite AI firsthand.  
+I learned that the hard way when I trapped myself in an never ending dependency loop, created by letting Chatty import npm packages into my repo.  
+The thought was easy lets just add some expo package to this repo, but then it happened.  
+3 critical vulnerabilities found.  
+Please run npm audit fix  
+I do it but to my horror the vulnerabilities just increase to 5.  
+Well time to ask Chatty.  
+Chatty again and again removed and added the same packages over and over again, to solve vulnerabilities. After like 45mins of doing various Chatty "fixes" I finally get frustrated enough to do it myself.  
+It took like 5 mins and I resolved the conflict.
+
+Lesson learned, don't rely on ChatGPT, one more lesson to hopefully become a competent senior dev in the future.
