@@ -1,0 +1,113 @@
+---
+title: 'Short cherry-pick tutorial'
+description: 'How to remove a single commit with cherry-pick'
+pubDate: 'Apr 2 2025'
+heroImage: '../../assets/images/cherry.png'
+category: 'Programming'
+tags: ['Tutorial', 'Git']
+---
+
+**Short Tutorial on how to use cherry-pick**
+
+Picture this, youre colleugue pushes 5 commits 2 are ok, 2 good and one is complete garbage.
+Now how do you take the garbage out?
+
+**Cherry-Pick**
+
+## Let's start with a simple txt file in an empty git directory.
+
+Now let's add our txt file
+
+```bash
+cat text.txt
+Imagine a Function here
+```
+
+now we add it to git
+
+```bash
+git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/kali/Desktop/gittest/.git/
+
+
+git add text.txt
+
+
+git commit
+[master (root-commit) 27c1aae] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 text.txt
+
+
+
+git log --oneline
+
+
+27c1aae (HEAD -> master) Initial commit
+```
+
+Perfect now we have our file lets add 5 commits.
+
+```bash
+git log --oneline
+
+d95c7b9 (HEAD -> master) 6th Function added
+bdb650c Function 5 added
+4dcaa6d 4th Function added (bad one)
+5d780f9 Added 3rd Function + typo fix in 2nd Function
+41b540d 2nd Function
+27c1aae Initial commit
+```
+
+Done!
+
+**Now how do we get rid of the bad commit?**
+
+First we make a new branch that starts before the bad commit.
+
+```bash
+└─$ git branch fix 5d780f9
+```
+
+so in the master branch we have
+
+```bash
+└─$ cat text.txt
+Imagine a Function here
+
+FunctionTwo looking good
+
+FunctionThree looking ok
+
+FunctionFour looking real bad
+
+FunctionFive looking good
+
+FunctionSix looking ok
+```
+
+and in the fix branch we have
+
+```bash
+└─$ git checkout fix
+Switched to branch 'fix'
+```
+
+```bash
+└─$ cat text.txt
+Imagine a Function here
+
+FunctionTwo looking good
+
+FunctionThree looking ok
+```
